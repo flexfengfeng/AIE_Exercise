@@ -1,0 +1,13 @@
+# AI Engineering Course - Shared Dependencies (code track)
+# Run: pip install -r requirements.txt
+
+# Used by every lesson notebook
+openai>=1.0.0,<4
+python-dotenv>=1.0.0
+
+# Used by Lesson 06 (embedding cosine similarity)
+numpy>=1.24.0
+
+# Needed to open and run the notebooks themselves
+jupyterlab>=4.0.0
+ipykernel>=6.25.0

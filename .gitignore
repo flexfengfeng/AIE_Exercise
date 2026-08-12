@@ -1,0 +1,16 @@
+# Secrets — never commit your API keys
+.env
+.env.local
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS
+.DS_Store
