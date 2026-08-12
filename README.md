@@ -3,6 +3,8 @@
 Bilingual (English / 中文) course on building applications with foundation models, based on
 Chip Huyen's *AI Engineering: Building Applications with Foundation Models* (O'Reilly, 2025).
 
+<img src="assets/aie_book_cover.jpg" alt="Cover of AI Engineering by Chip Huyen" width="200" align="right">
+
 Written for learners **with no programming background**: 10 lessons, 2 hours each
 (1 hour concept + 1 hour hands-on).
 
@@ -54,7 +56,7 @@ PROVIDER = 'openai'   # 'openai' / 'deepseek' / 'openrouter' / 'ollama'
 | `openai` | `OPENAI_API_KEY` | `gpt-5.6-luna` / `gpt-5.6-terra` | ✅ `text-embedding-3-small` |
 | `deepseek` | `DEEPSEEK_API_KEY` | `deepseek-v4-flash` / `deepseek-v4-pro` | ❌ falls back to a local bag-of-words vector |
 | `openrouter` | `OPENROUTER_API_KEY` | `openai/gpt-5.6-luna` / `openai/gpt-5.6-terra` | ❌ same fallback |
-| `ollama` | none (local, free) | `gemma4:e2b-mlx` | ✅ `nomic-embed-text` (pull it first) |
+| `ollama` | none (local, free) | `gemma4:e2b-mlx` — or any model you pull | ✅ `nomic-embed-text` (pull it first) |
 
 All four speak the OpenAI API format, so no other code changes. The rest of each notebook only
 uses `MODEL`, `MODEL_BIG`, and `EMBEDDING_MODEL`.
@@ -70,8 +72,40 @@ ollama pull gemma4:e2b-mlx      # ~6.5GB, MLX build for Apple Silicon
 ollama pull nomic-embed-text    # ~275MB, only needed for Lesson 6
 ```
 
-Then set `PROVIDER = 'ollama'`. A 2B local model runs every cell, but answer quality is well
-below the cloud models — expect weaker results in the evaluation and judging lessons.
+Then set `PROVIDER = 'ollama'`.
+
+**`gemma4:e2b-mlx` is only the proof of concept — use any local model your machine can handle.**
+It is a small 2B model chosen to show that the notebooks run end-to-end with zero API spend. It
+does run every cell, but answer quality is well below the cloud models, and it shows most in the
+evaluation and judging lessons. A bigger local model makes those lessons noticeably better.
+
+To swap it, pull whatever you like from [ollama.com/library](https://ollama.com/library) and put
+that name in the `ollama` block of the config cell:
+
+```python
+'ollama': {
+    'model': 'your-model-here',        # e.g. a 7B/8B chat model
+    'model_big': 'your-bigger-model',  # can be the same name if you only have one
+    ...
+}
+```
+
+Rough sizing — a 4-bit quantized model needs about **1GB of RAM/VRAM per billion parameters**,
+plus a couple of GB of headroom:
+
+| Your machine | Practical model size |
+|--------------|----------------------|
+| 8GB RAM | 2–3B |
+| 16GB RAM | 7–8B |
+| 32GB RAM | 13–14B, or a small MoE |
+| 64GB+ RAM / dedicated GPU | 30B+ — closest to cloud quality |
+
+Setting `model` and `model_big` to two *different* local models also makes Lesson 4 (model
+comparison) and Lesson 9 (small vs. big latency) meaningful again; with one model both sides of
+those comparisons are identical.
+
+On Apple Silicon, `-mlx` builds run through Apple's MLX framework and are faster than the generic
+GGUF builds. On other hardware just drop the suffix.
 
 ## Lessons
 
@@ -96,6 +130,7 @@ EN_Lesson_XX_*.ipynb                    code track, English
 Lesson_XX_*.ipynb                       code track, 中文
 AI_Engineering_10_Lesson_Course_EN.md   concept track, English
 AI工程化十节课教程_中文版.md               concept track, 中文
+assets/                                 images used by this README
 requirements.txt                        shared dependencies
 .env                                    your API keys (git-ignored, never commit)
 ```
