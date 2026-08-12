@@ -1,9 +1,9 @@
 # AI Engineering — 10-Lesson Course
 
+<img src="assets/aie_book_cover.jpg" alt="Cover of AI Engineering by Chip Huyen" width="200" align="right">
+
 Bilingual (English / 中文) course on building applications with foundation models, based on
 Chip Huyen's *AI Engineering: Building Applications with Foundation Models* (O'Reilly, 2025).
-
-<img src="assets/aie_book_cover.jpg" alt="Cover of AI Engineering by Chip Huyen" width="200" align="right">
 
 Written for learners **with no programming background**: 10 lessons, 2 hours each
 (1 hour concept + 1 hour hands-on).
