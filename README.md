@@ -5,18 +5,39 @@
 Bilingual (English / 中文) course on building applications with foundation models, based on
 Chip Huyen's *AI Engineering: Building Applications with Foundation Models* (O'Reilly, 2025).
 
-Written for learners **with no programming background**: 10 lessons, 2 hours each
-(1 hour concept + 1 hour hands-on).
+10 lessons, 2 hours each (1 hour concept + 1 hour hands-on).
 
 ## Two tracks
 
-| Track | Material | Prerequisites |
-|-------|----------|---------------|
-| **Concept** | [`AI_Engineering_10_Lesson_Course_EN.md`](AI_Engineering_10_Lesson_Course_EN.md) / [`AI工程化十节课教程_中文版.md`](AI工程化十节课教程_中文版.md) | none — web tools only (ChatGPT / Poe / AI Studio) |
-| **Code** | the `.ipynb` notebooks | Python + one API key (or a local model) |
+| Track | Material | Who it's for |
+|-------|----------|--------------|
+| **Concept** | [`AI_Engineering_10_Lesson_Course_EN.md`](AI_Engineering_10_Lesson_Course_EN.md) / [`AI工程化十节课教程_中文版.md`](AI工程化十节课教程_中文版.md) | anyone, no coding — web tools only (ChatGPT / Poe / AI Studio) |
+| **Code** | the `.ipynb` notebooks | some technical comfort required — see below |
 
 The tracks complement each other; neither is a translation of the other. Concept track builds
 intuition, code track makes the same ideas reproducible and editable.
+
+### How much programming do you need?
+
+**Concept track: none.** Everything runs in a browser with free tools.
+
+**Code track: you don't have to *write* Python, but you can't avoid *touching* it.** To get
+through the notebooks you need to be comfortable with:
+
+- running commands in a terminal (the Quick start block below)
+- getting an API key from a provider dashboard, or installing Ollama
+- opening Jupyter and running cells in order
+- editing values inside a Python dict — e.g. changing `PROVIDER`, or filling in your own scores
+  in Lesson 4
+- reading an error message and matching it against the Troubleshooting table
+
+No lesson asks you to write a function from scratch, and no prior Python is assumed. But "no
+programming background at all" is optimistic for this track — a complete beginner should either
+pair with someone technical for setup, or do the concept track first and come back.
+
+If the terminal is the blocker, an instructor can set the environment up once and hand out a
+ready-to-run machine or a hosted notebook. From there the course is mostly *run the cell, read
+the output, change one value, run it again*.
 
 ## Quick start
 
